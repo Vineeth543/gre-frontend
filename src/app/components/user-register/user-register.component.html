@@ -1,0 +1,43 @@
+<div class="register-page">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="logo-container">
+        <img src="../../../assets/logo.png" alt="logo" class="logo" />
+      </div>
+      <h1 class="text-center text-white">Register</h1>
+      <p class="text-center">
+        <a class="text-black" [routerLink]="['/login']"
+          >Already have an account.?</a
+        >
+      </p>
+      <form
+        [formGroup]="registerForm"
+        class="text-center"
+        (ngSubmit)="onRegister()"
+      >
+        <fieldset class="form-group">
+          <input
+            type="email"
+            class="form-control form-control-lg"
+            placeholder="Email"
+            formControlName="email"
+          />
+        </fieldset>
+        <fieldset class="form-group my-4">
+          <input
+            type="password"
+            class="form-control form-control-lg"
+            placeholder="Password"
+            formControlName="password"
+          />
+        </fieldset>
+        <button
+          class="btn btn-lg btn-primary"
+          [disabled]="registerForm.invalid"
+        >
+          Sign Up
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

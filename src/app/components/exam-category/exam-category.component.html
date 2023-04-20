@@ -1,0 +1,56 @@
+<div class="position-relative component" style="padding: 0 10%">
+  <h1 class="text-center">Exams Section</h1>
+  <button
+    class="btn btn-primary position-absolute top-0 end-0 mt-2"
+    style="margin-right: 10%"
+    routerLink="add"
+  >
+    New
+  </button>
+  <table class="table text-center">
+    <thead>
+      <tr>
+        <th>Section Id</th>
+        <th>Exam Id</th>
+        <th>No Of Questions</th>
+        <th>Type Of Questions</th>
+        <th>Duration</th>
+        <th>Positive Mark</th>
+        <th>Negative Mark</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let exam of exams">
+        <td>{{ exam.sectionId }}</td>
+        <td>{{ exam.examId?.slice(0, 8) | uppercase }}</td>
+        <td>{{ exam.numberOfQuestions }}</td>
+        <td>{{ exam.typeOfQuestion }}</td>
+        <td>{{ exam.durationInMinutes }} Mins</td>
+        <td>{{ exam.positiveMark }}</td>
+        <td>{{ exam.negativeMark }}</td>
+        <td>
+          <button
+            class="btn btn-info"
+            routerLink="details/{{ exam.sectionId }}"
+          >
+            View
+          </button>
+          <button
+            class="btn btn-success mx-2"
+            routerLink="edit/{{ exam.sectionId }}"
+          >
+            Update
+          </button>
+          <button
+            class="btn btn-danger"
+            (click)="onDeleteexam(exam.sectionId!)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h2 *ngIf="!exams.length" class="text-center">No data present. 😞</h2>
+</div>

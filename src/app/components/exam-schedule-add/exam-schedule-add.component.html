@@ -1,0 +1,44 @@
+<div class="component" style="padding: 0 10%">
+  <h3 class="text-center pt-2">Add Exam Category</h3>
+  <hr />
+  <form [formGroup]="postForm" (ngSubmit)="onAddExamCategory()">
+    <label>Schedule</label>
+    <select class="form-select mt-2" formControlName="examId">
+      <option [ngValue]="null" selected disabled>Select Schedule</option>
+      <option [value]="">Schedule 1</option>
+      <option [value]="">Schedule 2</option>
+      <option [value]="">Schedule 3</option>
+    </select>
+    <label class="my-2">Number Of Questions</label>
+    <input
+      type="number"
+      class="form-control"
+      formControlName="numberOfQuestions"
+    />
+    <label class="my-2">Type Of Questions</label>
+    <select class="form-select" formControlName="typeOfQuestion">
+      <option [ngValue]="null" selected disabled>Select Type</option>
+      <option [value]="">True or False</option>
+      <option [value]="">Fill in the blanks</option>
+      <option [value]="">Multiple Choice</option>
+    </select>
+    <label class="my-2">Duration</label>
+    <input
+      type="number"
+      class="form-control"
+      formControlName="durationInMinutes"
+    />
+    <label class="my-2">Positive Marks</label>
+    <input type="number" class="form-control" formControlName="positiveMark" />
+    <label class="my-2">Negative Marks</label>
+    <input type="number" class="form-control" formControlName="negativeMark" />
+    <div class="d-flex gap-4 mt-4">
+      <button class="btn btn-info" [disabled]="postForm.invalid">
+        Add Category ✔
+      </button>
+      <button type="button" class="btn btn-danger" routerLink="/category">
+        Cancel ❌
+      </button>
+    </div>
+  </form>
+</div>

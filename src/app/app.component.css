@@ -1,0 +1,53 @@
+.wrapper {
+  width: 100%;
+  margin: auto;
+}
+
+nav {
+  background: linear-gradient(45deg, #e48282, #adc163);
+  padding: 0 15%;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+nav ul li {
+  flex: 1;
+}
+
+nav ul li a {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+
+.user-icon {
+  width: 50px;
+  margin-left: 50%;
+}
+
+nav ul li a:hover {
+  background-color: rgba(168, 90, 90, 0.5);
+}
+
+.active {
+  background-color: rgba(168, 90, 90, 0.5);
+}
+
+section {
+  padding: 0 15%;
+  display: none;
+}
+
+.active-section {
+  display: block;
+}

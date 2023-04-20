@@ -1,0 +1,50 @@
+<div class="position-relative component" style="padding: 0 10%">
+  <h1 class="text-center">Exams Schedule</h1>
+  <button
+    class="btn btn-primary position-absolute top-0 end-0 mt-2"
+    style="margin-right: 10%"
+    routerLink="add"
+  >
+    New
+  </button>
+  <table class="table text-center">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Duration</th>
+        <th>Instructions</th>
+        <th>Start Time</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let exam of exams">
+        <td>{{ exam.examId?.slice(0, 8) | uppercase }}</td>
+        <td>{{ exam.examName }}</td>
+        <td>{{ exam.examDate.split("T")[0] }}</td>
+        <td>{{ exam.durationInMinutes }} Mins</td>
+        <td>{{ exam.instructions }}</td>
+        <td>
+          {{ exam.startTime.split("T")[1] }}
+        </td>
+        <td>
+          <button class="btn btn-info" routerLink="details/{{ exam.examId }}">
+            View
+          </button>
+          <button
+            class="btn btn-success mx-2"
+            routerLink="edit/{{ exam.examId }}"
+          >
+            Update
+          </button>
+          <button class="btn btn-danger" (click)="onDeleteexam(exam.examId!)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h2 *ngIf="!exams.length" class="text-center">No data present. 😞</h2>
+</div>

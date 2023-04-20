@@ -1,0 +1,20 @@
+/* add a gradint mat finish bacground color */
+.register-page {
+  width: 100%;
+  height: 112vh;
+  background: linear-gradient(45deg, #e48282, #adc163);
+}
+
+.row {
+  padding-top: 7%;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  width: 150px;
+}
