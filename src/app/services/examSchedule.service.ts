@@ -38,4 +38,42 @@ export class ExamSceduleService {
       this.baseUrl + `/exams/${id}`
     );
   }
+
+  getExamsFromLocalStorage(): ExamScheduleInterface[] {
+    return JSON.parse(localStorage.getItem('exam-schedule') || '[]');
+  }
+
+  getExamByIdFromLocalStorage(id: string): ExamScheduleInterface {
+    let exams = JSON.parse(localStorage.getItem('exam-schedule') || '[]');
+    return exams.find((exam: ExamScheduleInterface) => exam.examId === id);
+  }
+
+  createExamInLocalStorage(exam: ExamScheduleInterface) {
+    let exams = JSON.parse(localStorage.getItem('exam-schedule') || '[]');
+    exam.examId = Math.random().toString(36).substr(2, 9);
+    exams.push(exam);
+    localStorage.setItem('exam-schedule', JSON.stringify(exams));
+    alert('Exam created in local storage!');
+  }
+
+  updateExamInLocalStorage(id: string, exam: ExamScheduleInterface) {
+    let exams = JSON.parse(localStorage.getItem('exam-schedule')!);
+    let index = exams.findIndex(
+      (exam: ExamScheduleInterface) => exam.examId === id
+    );
+    exam.examId = id;
+    exams[index] = exam;
+    localStorage.setItem('exam-schedule', JSON.stringify(exams));
+    alert('Exam updated in local storage!');
+  }
+
+  deleteExamFromLocalStorage(id: string) {
+    let exams = JSON.parse(localStorage.getItem('exam-schedule')!);
+    let index = exams.findIndex(
+      (exam: ExamScheduleInterface) => exam.examId === id
+    );
+    exams.splice(index, 1);
+    localStorage.setItem('exam-schedule', JSON.stringify(exams));
+    alert('Exam deleted from local storage!');
+  }
 }

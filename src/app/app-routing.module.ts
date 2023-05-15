@@ -9,18 +9,19 @@ import { ExamCategoryAddComponent } from './components/exam-category-add/exam-ca
 import { ExamCategoryViewComponent } from './components/exam-category-view/exam-category-view.component';
 import { ExamScheduleAddComponent } from './components/exam-schedule-add/exam-schedule-add.component';
 import { ExamScheduleViewComponent } from './components/exam-schedule-view/exam-schedule-view.component';
+import { ExamScheduleUpdateComponent } from './components/exam-schedule-update/exam-schedule-update.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'schedule', pathMatch: 'full' },
   { path: 'login', component: UserLoginComponent },
   { path: 'schedule', component: ExamScheduleComponent },
   { path: 'schedule/add', component: ExamScheduleAddComponent },
-  { path: 'schedule/update/:id', component: ExamScheduleAddComponent },
-  { path: 'schedule/view', component: ExamScheduleViewComponent },
+  { path: 'schedule/view/:id', component: ExamScheduleViewComponent },
+  { path: 'schedule/update/:id', component: ExamScheduleUpdateComponent },
   { path: 'category', component: ExamCategoryComponent },
   { path: 'category/add', component: ExamCategoryAddComponent },
+  { path: 'category/view/:id', component: ExamCategoryViewComponent },
   { path: 'category/update/:id', component: ExamCategoryAddComponent },
-  { path: 'category/view', component: ExamCategoryViewComponent },
   { path: 'question', component: ExamQuestionComponent },
   { path: 'register', component: UserRegisterComponent },
   { path: '**', redirectTo: 'schedule' },

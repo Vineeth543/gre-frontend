@@ -13,6 +13,7 @@ import { ExamCategoryViewComponent } from './components/exam-category-view/exam-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ExamScheduleViewComponent } from './components/exam-schedule-view/exam-schedule-view.component';
 import { ExamScheduleAddComponent } from './components/exam-schedule-add/exam-schedule-add.component';
+import { ExamScheduleUpdateComponent } from './components/exam-schedule-update/exam-schedule-update.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ExamScheduleAddComponent } from './components/exam-schedule-add/exam-sc
     ExamCategoryViewComponent,
     ExamScheduleViewComponent,
     ExamScheduleAddComponent,
+    ExamScheduleUpdateComponent,
   ],
   imports: [
     BrowserModule,

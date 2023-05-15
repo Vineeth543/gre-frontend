@@ -27,24 +27,24 @@
         <td>{{ exam.durationInMinutes }} Mins</td>
         <td>{{ exam.instructions }}</td>
         <td>
-          {{ exam.startTime.split("T")[1] }}
+          {{ exam.startTime.split("T")[1] || exam.startTime }}
         </td>
         <td>
-          <button class="btn btn-info" routerLink="details/{{ exam.examId }}">
+          <button class="btn btn-info" routerLink="view/{{ exam.examId }}">
             View
           </button>
           <button
             class="btn btn-success mx-2"
-            routerLink="edit/{{ exam.examId }}"
+            routerLink="update/{{ exam.examId }}"
           >
             Update
           </button>
-          <button class="btn btn-danger" (click)="onDeleteexam(exam.examId!)">
+          <button class="btn btn-danger" (click)="onDeleteExam(exam.examId!)">
             Delete
           </button>
         </td>
       </tr>
     </tbody>
   </table>
-  <h2 *ngIf="!exams.length" class="text-center">No data present. 😞</h2>
+  <h2 *ngIf="!exams.length" class="text-center mt-5">No data present. 😞</h2>
 </div>

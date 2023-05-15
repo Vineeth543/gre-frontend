@@ -1,1 +1,44 @@
-<p>exam-schedule-view works!</p>
+<div class="component" style="padding: 0 10%">
+  <h3 class="text-center pt-2">View Exam Schedule</h3>
+  <hr />
+  <form [formGroup]="postForm">
+    <label class="my-2">Exam Id</label>
+    <input type="text" class="form-control" formControlName="examId" readonly />
+    <label class="my-2">Exam Name</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="examName"
+      readonly
+    />
+    <label class="my-2">Exam Date</label>
+    <input
+      type="date"
+      class="form-control"
+      formControlName="examDate"
+      readonly
+    />
+    <label class="my-2">Exam Start Time</label>
+    <input
+      type="time"
+      class="form-control"
+      formControlName="startTime"
+      readonly
+    />
+    <label class="my-2">Duration In Minutes</label>
+    <input
+      type="number"
+      class="form-control"
+      formControlName="durationInMinutes"
+      readonly
+    />
+    <label class="my-2">Exam Instructions</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="instructions"
+      readonly
+    />
+    <button class="btn btn-info mt-2" routerLink="../">Back</button>
+  </form>
+</div>

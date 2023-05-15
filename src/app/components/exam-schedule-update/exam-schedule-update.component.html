@@ -1,14 +1,9 @@
 <div class="component" style="padding: 0 10%">
-  <h3 class="text-center pt-2">Add Exam Schedule</h3>
+  <h3 class="text-center pt-2">Update Exam Schedule</h3>
   <hr />
-  <form [formGroup]="postForm" (ngSubmit)="onAddExamCategory()">
+  <form [formGroup]="postForm" (ngSubmit)="updateExam()">
     <label class="my-2">Exam Name</label>
-    <input
-      type="text"
-      class="form-control"
-      formControlName="examName"
-      placeholder="Example: Physics Internal Text 1"
-    />
+    <input type="text" class="form-control" formControlName="examName" />
     <label class="my-2">Exam Date</label>
     <input type="date" class="form-control" formControlName="examDate" />
     <label class="my-2">Exam Start Time</label>
@@ -20,15 +15,10 @@
       formControlName="durationInMinutes"
     />
     <label class="my-2">Exam Instructions</label>
-    <input
-      type="text"
-      class="form-control"
-      formControlName="instructions"
-      placeholder="Example: All questions are mandatory"
-    />
+    <input type="text" class="form-control" formControlName="instructions" />
     <div class="d-flex gap-4 mt-4">
       <button class="btn btn-info" [disabled]="postForm.invalid">
-        Add Schedule ✔
+        Update ✔
       </button>
       <button type="button" class="btn btn-danger" routerLink="/schedule">
         Cancel ❌
