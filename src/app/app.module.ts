@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ExamScheduleViewComponent } from './components/exam-schedule-view/exam-schedule-view.component';
 import { ExamScheduleAddComponent } from './components/exam-schedule-add/exam-schedule-add.component';
 import { ExamScheduleUpdateComponent } from './components/exam-schedule-update/exam-schedule-update.component';
+import { ExamCategoryUpdateComponent } from './components/exam-category-update/exam-category-update.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ExamScheduleUpdateComponent } from './components/exam-schedule-update/e
     ExamScheduleViewComponent,
     ExamScheduleAddComponent,
     ExamScheduleUpdateComponent,
+    ExamCategoryUpdateComponent,
   ],
   imports: [
     BrowserModule,

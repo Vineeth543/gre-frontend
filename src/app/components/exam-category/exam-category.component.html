@@ -32,19 +32,19 @@
         <td>
           <button
             class="btn btn-info"
-            routerLink="details/{{ exam.sectionId }}"
+            routerLink="view/{{ exam.examId }}/{{ exam.sectionId }}"
           >
             View
           </button>
           <button
             class="btn btn-success mx-2"
-            routerLink="edit/{{ exam.sectionId }}"
+            routerLink="update/{{ exam.examId }}/{{ exam.sectionId }}"
           >
             Update
           </button>
           <button
             class="btn btn-danger"
-            (click)="onDeleteexam(exam.sectionId!)"
+            (click)="onDeleteExamCategory(exam.examId!, exam.sectionId!)"
           >
             Delete
           </button>
@@ -52,5 +52,5 @@
       </tr>
     </tbody>
   </table>
-  <h2 *ngIf="!exams.length" class="text-center">No data present. 😞</h2>
+  <h2 *ngIf="!exams?.length" class="text-center mt-5">No data present. 😞</h2>
 </div>

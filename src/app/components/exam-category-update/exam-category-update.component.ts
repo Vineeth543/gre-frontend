@@ -1,21 +1,22 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ExamCategoryInterface } from 'src/app/models/ExamCategory.model';
 import { ExamCategoryService } from 'src/app/services/examCategory.service';
 
 @Component({
-  selector: 'app-exam-category-view',
-  templateUrl: './exam-category-view.component.html',
-  styleUrls: ['./exam-category-view.component.css'],
+  selector: 'app-exam-category-update',
+  templateUrl: './exam-category-update.component.html',
+  styleUrls: ['./exam-category-update.component.css'],
 })
-export class ExamCategoryViewComponent {
+export class ExamCategoryUpdateComponent {
   examId!: string;
   categoryId!: number;
   postForm!: FormGroup;
   category!: ExamCategoryInterface;
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private categoryService: ExamCategoryService
   ) {}
@@ -47,6 +48,28 @@ export class ExamCategoryViewComponent {
               +this.categoryId
             )
           ),
+      });
+  }
+
+  updateExamCategory() {
+    if (this.postForm.invalid) return;
+    this.categoryService
+      .updateExamCategory(this.examId, +this.categoryId, this.postForm.value)
+      .subscribe({
+        error: () => {
+          this.categoryService.updateExamCategoryInLocalStorage(
+            this.examId,
+            +this.categoryId,
+            this.postForm.value
+          );
+          this.postForm.reset();
+          this.router.navigate(['/category']);
+        },
+        complete: () => {
+          alert('Exam updated successfully!');
+          this.postForm.reset();
+          this.router.navigate(['/category']);
+        },
       });
   }
 }

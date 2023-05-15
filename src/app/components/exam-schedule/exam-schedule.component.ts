@@ -32,7 +32,7 @@ export class ExamScheduleComponent implements OnInit {
         this.getAllExamSchedule();
       },
       complete: () => {
-        alert('Exam created successfully!');
+        alert('Exam deleted successfully!');
         this.getAllExamSchedule();
       },
     });

@@ -11,6 +11,10 @@ export class ExamCategoryService {
 
   constructor(private http: HttpClient) {}
 
+  getAllExamCategories(): Observable<ExamCategoryInterface[]> {
+    return this.http.get<ExamCategoryInterface[]>(this.baseUrl + '/exam');
+  }
+
   getExamCategories(examId: string): Observable<ExamCategoryInterface[]> {
     return this.http.get<ExamCategoryInterface[]>(
       this.baseUrl + `/exam/${examId}/categories`
@@ -19,7 +23,7 @@ export class ExamCategoryService {
 
   getExamCategoryById(
     examId: string,
-    categoryId: string
+    categoryId: number
   ): Observable<ExamCategoryInterface> {
     return this.http.get<ExamCategoryInterface>(
       this.baseUrl + `/exam/${examId}/categories/${categoryId}`
@@ -27,20 +31,21 @@ export class ExamCategoryService {
   }
 
   createExamCategory(
-    examId: string,
     category: ExamCategoryInterface
   ): Observable<ExamCategoryInterface> {
     return this.http.post<ExamCategoryInterface>(
-      this.baseUrl + `/exam/${examId}/categories`,
+      this.baseUrl + `/exam/categories`,
       category
     );
   }
 
   updateExamCategory(
     examId: string,
-    categoryId: string,
+    categoryId: number,
     category: ExamCategoryInterface
   ): Observable<ExamCategoryInterface> {
+    category.examId = examId;
+    category.sectionId = categoryId;
     return this.http.put<ExamCategoryInterface>(
       this.baseUrl + `/exam/${examId}/categories/${categoryId}`,
       category
@@ -49,10 +54,65 @@ export class ExamCategoryService {
 
   deleteExamCategory(
     examId: string,
-    categoryId: string
+    categoryId: number
   ): Observable<ExamCategoryInterface> {
     return this.http.delete<ExamCategoryInterface>(
       this.baseUrl + `/exam/${examId}/categories/${categoryId}`
     );
+  }
+
+  getExamCategoriesFromLocalStorage() {
+    return JSON.parse(localStorage.getItem('exam-category') || '[]');
+  }
+
+  getExamCategoryByIdFromLocalStorage(examId: string, categoryId: number) {
+    let examCategories = JSON.parse(localStorage.getItem('exam-category')!);
+    return examCategories.find(
+      (category: ExamCategoryInterface) =>
+        category.examId === examId && category.sectionId === categoryId
+    );
+  }
+
+  addExamCategoryToLocalStorage(category: ExamCategoryInterface) {
+    let examCategories = JSON.parse(
+      localStorage.getItem('exam-category') || '[]'
+    );
+    examCategories.push(category);
+    localStorage.setItem('exam-category', JSON.stringify(examCategories));
+    alert('Exam category created in local storage!');
+  }
+
+  updateExamCategoryInLocalStorage(
+    examId: string,
+    categoryId: number,
+    category: ExamCategoryInterface
+  ) {
+    let examCategories = JSON.parse(localStorage.getItem('exam-category')!);
+    let index = examCategories.findIndex(
+      (category: ExamCategoryInterface) =>
+        category.examId === examId && category.sectionId === categoryId
+    );
+    category.examId = examId;
+    category.sectionId = categoryId;
+    examCategories[index] = category;
+    localStorage.setItem('exam-category', JSON.stringify(examCategories));
+    alert('Exam category updated in local storage!');
+  }
+
+  deleteExamCategoryFromLocalStorage(examId: string, categoryId: number) {
+    let examCategories = JSON.parse(
+      localStorage.getItem('exam-category') || '[]'
+    );
+    let index = examCategories.findIndex(
+      (category: ExamCategoryInterface) =>
+        category.examId === examId && category.sectionId === categoryId
+    );
+    examCategories.splice(index, 1);
+    let newSectionId = 1;
+    examCategories.forEach((category: ExamCategoryInterface) => {
+      category.examId === examId && (category.sectionId = newSectionId++);
+    });
+    localStorage.setItem('exam-category', JSON.stringify(examCategories));
+    alert('Exam category deleted from local storage!');
   }
 }

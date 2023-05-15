@@ -1,1 +1,41 @@
-<p>exam-category-view works!</p>
+<div class="component" style="padding: 0 10%">
+  <h3 class="text-center pt-2">View Exam Schedule</h3>
+  <hr />
+  <form [formGroup]="postForm">
+    <label class="my-2">Number Of Questions</label>
+    <input
+      type="number"
+      class="form-control"
+      formControlName="numberOfQuestions"
+      readonly
+    />
+    <label class="my-2">Type Of Questions</label>
+    <select class="form-select" formControlName="typeOfQuestion" readonly>
+      <option [value]="postForm.value.typeOfQuestion" readonly>
+        {{ postForm.value.typeOfQuestion }}
+      </option>
+    </select>
+    <label class="my-2">Duration</label>
+    <input
+      type="number"
+      class="form-control"
+      formControlName="durationInMinutes"
+      readonly
+    />
+    <label class="my-2">Positive Marks</label>
+    <input
+      type="number"
+      class="form-control"
+      formControlName="positiveMark"
+      readonly
+    />
+    <label class="my-2">Negative Marks</label>
+    <input
+      type="number"
+      class="form-control"
+      formControlName="negativeMark"
+      readonly
+    />
+    <button class="btn btn-info mt-4" routerLink="../">Back</button>
+  </form>
+</div>

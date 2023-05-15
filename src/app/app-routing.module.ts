@@ -10,6 +10,7 @@ import { ExamCategoryViewComponent } from './components/exam-category-view/exam-
 import { ExamScheduleAddComponent } from './components/exam-schedule-add/exam-schedule-add.component';
 import { ExamScheduleViewComponent } from './components/exam-schedule-view/exam-schedule-view.component';
 import { ExamScheduleUpdateComponent } from './components/exam-schedule-update/exam-schedule-update.component';
+import { ExamCategoryUpdateComponent } from './components/exam-category-update/exam-category-update.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'schedule', pathMatch: 'full' },
@@ -20,8 +21,14 @@ const routes: Routes = [
   { path: 'schedule/update/:id', component: ExamScheduleUpdateComponent },
   { path: 'category', component: ExamCategoryComponent },
   { path: 'category/add', component: ExamCategoryAddComponent },
-  { path: 'category/view/:id', component: ExamCategoryViewComponent },
-  { path: 'category/update/:id', component: ExamCategoryAddComponent },
+  {
+    path: 'category/view/:examId/:categoryId',
+    component: ExamCategoryViewComponent,
+  },
+  {
+    path: 'category/update/:examId/:categoryId',
+    component: ExamCategoryUpdateComponent,
+  },
   { path: 'question', component: ExamQuestionComponent },
   { path: 'register', component: UserRegisterComponent },
   { path: '**', redirectTo: 'schedule' },
