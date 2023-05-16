@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ExamSceduleService } from 'src/app/services/examSchedule.service';
 
 @Component({

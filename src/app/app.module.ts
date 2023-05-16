@@ -15,6 +15,9 @@ import { ExamScheduleViewComponent } from './components/exam-schedule-view/exam-
 import { ExamScheduleAddComponent } from './components/exam-schedule-add/exam-schedule-add.component';
 import { ExamScheduleUpdateComponent } from './components/exam-schedule-update/exam-schedule-update.component';
 import { ExamCategoryUpdateComponent } from './components/exam-category-update/exam-category-update.component';
+import { ExamQuestionAddComponent } from './components/exam-question-add/exam-question-add.component';
+import { ExamQuestionUpdateComponent } from './components/exam-question-update/exam-question-update.component';
+import { ExamQuestionViewComponent } from './components/exam-question-view/exam-question-view.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,9 @@ import { ExamCategoryUpdateComponent } from './components/exam-category-update/e
     ExamScheduleAddComponent,
     ExamScheduleUpdateComponent,
     ExamCategoryUpdateComponent,
+    ExamQuestionAddComponent,
+    ExamQuestionUpdateComponent,
+    ExamQuestionViewComponent,
   ],
   imports: [
     BrowserModule,

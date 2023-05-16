@@ -1,0 +1,24 @@
+<div class="component" style="padding: 0 10%">
+  <h3 class="text-center pt-2">Add Question</h3>
+  <hr />
+  <form [formGroup]="postForm" (ngSubmit)="onAddExamQuestion()">
+    <label class="my-2">Question</label>
+    <input type="text" class="form-control" formControlName="question" />
+    <label class="my-2">Options</label>
+    <input type="text" class="form-control" formControlName="options" />
+    <label class="my-2">Correct Option</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="correctOptionIndex"
+    />
+    <div class="d-flex gap-4 mt-4">
+      <button class="btn btn-info" [disabled]="postForm.invalid">
+        Add Question ✔
+      </button>
+      <button type="button" class="btn btn-danger" routerLink="../">
+        Cancel ❌
+      </button>
+    </div>
+  </form>
+</div>

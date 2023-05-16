@@ -15,7 +15,9 @@ export class ExamCategoryService {
     return this.http.get<ExamCategoryInterface[]>(this.baseUrl + '/exam');
   }
 
-  getExamCategories(examId: string): Observable<ExamCategoryInterface[]> {
+  getExamCategoriesByExamId(
+    examId: string
+  ): Observable<ExamCategoryInterface[]> {
     return this.http.get<ExamCategoryInterface[]>(
       this.baseUrl + `/exam/${examId}/categories`
     );
@@ -65,6 +67,13 @@ export class ExamCategoryService {
     return JSON.parse(localStorage.getItem('exam-category') || '[]');
   }
 
+  getExamCategoriesByExamIdFromLocalStorage(examId: string) {
+    let examCategories = JSON.parse(localStorage.getItem('exam-category')!);
+    return examCategories.filter(
+      (category: ExamCategoryInterface) => category.examId === examId
+    );
+  }
+
   getExamCategoryByIdFromLocalStorage(examId: string, categoryId: number) {
     let examCategories = JSON.parse(localStorage.getItem('exam-category')!);
     return examCategories.find(
@@ -100,9 +109,7 @@ export class ExamCategoryService {
   }
 
   deleteExamCategoryFromLocalStorage(examId: string, categoryId: number) {
-    let examCategories = JSON.parse(
-      localStorage.getItem('exam-category') || '[]'
-    );
+    let examCategories = JSON.parse(localStorage.getItem('exam-category')!);
     let index = examCategories.findIndex(
       (category: ExamCategoryInterface) =>
         category.examId === examId && category.sectionId === categoryId

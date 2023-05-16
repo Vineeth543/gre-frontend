@@ -25,7 +25,6 @@ export class ExamCategoryComponent implements OnInit {
   }
 
   onDeleteExamCategory(examId: string, sectionId: number) {
-    console.log(examId, sectionId);
     if (!confirm('Are you sure you want to delete this exam?')) return;
     this.categoryService.deleteExamCategory(examId, sectionId).subscribe({
       error: () => {

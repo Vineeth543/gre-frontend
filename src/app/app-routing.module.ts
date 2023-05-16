@@ -11,6 +11,9 @@ import { ExamScheduleAddComponent } from './components/exam-schedule-add/exam-sc
 import { ExamScheduleViewComponent } from './components/exam-schedule-view/exam-schedule-view.component';
 import { ExamScheduleUpdateComponent } from './components/exam-schedule-update/exam-schedule-update.component';
 import { ExamCategoryUpdateComponent } from './components/exam-category-update/exam-category-update.component';
+import { ExamQuestionAddComponent } from './components/exam-question-add/exam-question-add.component';
+import { ExamQuestionViewComponent } from './components/exam-question-view/exam-question-view.component';
+import { ExamQuestionUpdateComponent } from './components/exam-question-update/exam-question-update.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'schedule', pathMatch: 'full' },
@@ -30,6 +33,26 @@ const routes: Routes = [
     component: ExamCategoryUpdateComponent,
   },
   { path: 'question', component: ExamQuestionComponent },
+  {
+    path: 'question/:examId',
+    component: ExamQuestionComponent,
+  },
+  {
+    path: 'question/:examId/:categoryId',
+    component: ExamQuestionComponent,
+  },
+  {
+    path: 'question/:examId/:categoryId/add',
+    component: ExamQuestionAddComponent,
+  },
+  {
+    path: 'question/:examId/:categoryId/:questionId/view',
+    component: ExamQuestionViewComponent,
+  },
+  {
+    path: 'question/:examId/:categoryId/:questionId/update',
+    component: ExamQuestionUpdateComponent,
+  },
   { path: 'register', component: UserRegisterComponent },
   { path: '**', redirectTo: 'schedule' },
 ];

@@ -8,7 +8,7 @@ import { ExamSceduleService } from 'src/app/services/examSchedule.service';
   styleUrls: ['./exam-schedule.component.css'],
 })
 export class ExamScheduleComponent implements OnInit {
-  exams: ExamScheduleInterface[] = [];
+  exams!: ExamScheduleInterface[];
 
   constructor(private scheduleService: ExamSceduleService) {}
 
