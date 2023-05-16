@@ -1,5 +1,6 @@
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -10,7 +11,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class UserLoginComponent {
   loginForm!: FormGroup;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -24,11 +25,14 @@ export class UserLoginComponent {
 
   onLogin(): void {
     if (this.loginForm.invalid) return;
-    if (
-      this.loginForm.value.email === 'vineeth@gmail.com' &&
-      this.loginForm.value.password === '123456'
-    ) {
-      this.router.navigate(['/schedule']);
-    }
+
+    this.authService.login(this.loginForm.value).subscribe({
+      error: () =>
+        this.authService.loginUserUsingLocalStorage(this.loginForm.value),
+      complete: () => {
+        alert('Logged in successfully');
+        this.router.navigate(['/']);
+      },
+    });
   }
 }
